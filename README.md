@@ -52,30 +52,30 @@ The relationship between budget and profit shows that high-budget films usually 
 
 ## Як повторити аналіз?
 
-1. **Завантажте репозиторій**:
+1. **To download the repository**:
    ```bash
    git clone https://github.com/ArnDkl341232/FilmAnaliser.git
 
-2. **Встановіть залежності: Переконайтеся, що у вас встановлено Python 3.8+ та бібліотеки:**
+2. **Install dependencies: Make sure you have Python 3.8+ installed and libraries:**
 
     ```bash
     pip install pandas matplotlib seaborn
 
-3. **Запустити скрипт**:
-Виконайте `main.py` для автоматичного аналізу:
+3. **Run the script**:
+Run `main.py` for automatic analysis:
 
     ```bash
     python main.py
    
-4. **Огляньте результати**:
-   Очищений датасет буде збережений як `cleaned_movies_metadata.csv`,
-   а графіки - у файлах:
+4. **Check out the results**:
+   The cleaned dataset will be saved as `cleaned_movies_metadata.csv`,
+   and graphics - in files:
    - `genre_popularity.png`
    - `popularity_trend.png`
    - `budget_vs_profit.png`
    
-## Контакти
+## Contacts
 
-Якщо у вас є запитання, пишіть на email: hungreman300@gamail.com.
+If you have any questions, write to email: hungreman300@gamail.com.
 
-Дякуємо, що зацікавилися нашим проєктом!
+Thank you for your interest in our project!

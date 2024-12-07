@@ -1,7 +1,7 @@
 import pandas
 import  matplotlib.pyplot as plt
 import pandas as pd
-import seaborn
+import seaborn as sns
 import ast
 
 #download dataset
@@ -9,9 +9,9 @@ url = "movies_metadata.csv"
 movies_df = pd.read_csv(url)
 
 #output info about database
-movies_df.info()
-print(movies_df.head())
-print(movies_df.describe())
+# movies_df.info()
+# print(movies_df.head())
+# print(movies_df.describe())
 
 def extract_genres(genres_str):
     try:
@@ -22,7 +22,6 @@ def extract_genres(genres_str):
 
 # print(movies_df['genres'])
 movies_df['genres'] = movies_df['genres'].apply(extract_genres)
-
 # print(movies_df['genres'])
 
 #-----------------------------------------------------------------------------------------------------------------------
@@ -38,6 +37,39 @@ movies_df.dropna(subset=['budget', 'revenue'], inplace=True)
 
 #-----------------------------------------------------------------------------------------------------------------------
 movies_df['release_date'] = pd.to_datetime(movies_df['release_date'], errors='coerce').dt.year
-# print(movies_df['release_date'])
+print(movies_df['release_date'])
 
 #-----------------------------------------------------------------------------------------------------------------------
+
+genres_exploded = movies_df[['title', 'release_date', 'budget', 'revenue', 'genres']].explode('genres')
+print(genres_exploded)
+
+genre_count = genres_exploded['genres'].value_counts()
+print(genre_count)
+
+# Visualization of genres
+plt.figure(figsize=(10,6))
+sns.barplot(x=genre_count.index, y=genre_count.values)
+plt.title("Amount of films by genres")
+plt.xlabel("Genr")
+plt.ylabel("Amount of films")
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+
+# --------------------------------------------------------------------------------------------------------------------
+
+# movies_df['popularity'] = pd.to_numeric(movies_df['popularity'], errors='coerce')
+# popularity_trend = movies_df.groupby('release_year')['popularity'].mean()
+#
+# # Visualization of popularity trends
+#
+# plt.figure(figsize=(12,6))
+# popularity_trend.plot()
+# plt.title("Середня популярність фільмів за роками")
+# plt.xlabel("Рік")
+# plt.ylabel("Популярність")
+# # plt.xticks(rotation=45)
+# plt.tight_layout()
+# plt.show()

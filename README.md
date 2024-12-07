@@ -25,5 +25,16 @@ Main columns:
 1. Deleted notations without dates, with incorrect budget or income.
 2. JSON format genres are divided into separate lines.
 3. Added new columns: `release_year`.
-4. 
 
+
+## Results
+
+### 1. Popularity of genres
+The graph below shows the number of films for each genre.
+
+The most popular genres:
+- **Drama**
+- **Comedy**
+- **Thriller**
+
+![Popularity of genres](genre_popularity.png)

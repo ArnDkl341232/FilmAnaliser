@@ -10,10 +10,8 @@ movies_df = pd.read_csv(url)
 
 #output info about database
 movies_df.info()
-
-# print(movies_df.head())
-#
-# print(movies_df.describe())
+print(movies_df.head())
+print(movies_df.describe())
 
 def extract_genres(genres_str):
     try:

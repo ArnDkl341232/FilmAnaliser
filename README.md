@@ -14,3 +14,16 @@ Main columns:
 - `title` : Film name.
 - `budget` : Budget.
 - `revenue` : Film revenue.
+- `release_date` : Release date.
+- `genres` : Genres in JSON.
+- `popularity` : Popularity.
+- `vote_average` : Vote average.
+
+
+### Data clearing
+
+1. Deleted notations without dates, with incorrect budget or income.
+2. JSON format genres are divided into separate lines.
+3. Added new columns: `release_year`.
+4. 
+

@@ -54,7 +54,7 @@ The relationship between budget and profit shows that high-budget films usually 
 
 1. **Завантажте репозиторій**:
    ```bash
-   git clone <URL-репозиторію>
+   git clone https://github.com/ArnDkl341232/FilmAnaliser.git
 
 2. **Встановіть залежності: Переконайтеся, що у вас встановлено Python 3.8+ та бібліотеки:**
 

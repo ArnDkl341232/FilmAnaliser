@@ -36,12 +36,12 @@ movies_df.dropna(subset=['budget', 'revenue'], inplace=True)
 # print(movies_df['revenue'])
 
 #-----------------------------------------------------------------------------------------------------------------------
-movies_df['release_date'] = pd.to_datetime(movies_df['release_date'], errors='coerce').dt.year
-print(movies_df['release_date'])
+movies_df['release_year'] = pd.to_datetime(movies_df['release_date'], errors='coerce').dt.year
+print(movies_df['release_year'])
 
 #-----------------------------------------------------------------------------------------------------------------------
 
-genres_exploded = movies_df[['title', 'release_date', 'budget', 'revenue', 'genres']].explode('genres')
+genres_exploded = movies_df[['title', 'release_year', 'budget', 'revenue', 'genres']].explode('genres')
 print(genres_exploded)
 
 genre_count = genres_exploded['genres'].value_counts()
@@ -55,21 +55,36 @@ plt.xlabel("Genr")
 plt.ylabel("Amount of films")
 plt.xticks(rotation=45)
 plt.tight_layout()
+#plt.show()
+
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+movies_df['popularity'] = pd.to_numeric(movies_df['popularity'], errors='coerce')
+popularity_trend = movies_df.groupby('release_year')['popularity'].mean()
+
+# Visualization of popularity trends
+
+plt.figure(figsize=(12,6))
+popularity_trend.plot()
+plt.title("Average popularity of films by year")
+plt.xlabel("Year")
+plt.ylabel("Popularity")
+# plt.xticks(rotation=45)
+plt.tight_layout()
+#plt.show()
+
+#-----------------------------------------------------------------------------------------------------------------------
+movies_df['profit'] = movies_df['revenue'] - movies_df['budget']
+
+plt.figure(figsize=(10,6))
+sns.scatterplot(data = movies_df, x="budget" , y="profit", alpha=0.3)
+plt.title("Budget vs profit")
+plt.xlabel("Budget")
+plt.ylabel("Profit")
+plt.tight_layout()
 plt.show()
 
+cleaned_file_path = 'cleaned_movies_metadata.csv'
+movies_df.to_csv(cleaned_file_path, index = False)
 
-# --------------------------------------------------------------------------------------------------------------------
-
-# movies_df['popularity'] = pd.to_numeric(movies_df['popularity'], errors='coerce')
-# popularity_trend = movies_df.groupby('release_year')['popularity'].mean()
-#
-# # Visualization of popularity trends
-#
-# plt.figure(figsize=(12,6))
-# popularity_trend.plot()
-# plt.title("Середня популярність фільмів за роками")
-# plt.xlabel("Рік")
-# plt.ylabel("Популярність")
-# # plt.xticks(rotation=45)
-# plt.tight_layout()
-# plt.show()

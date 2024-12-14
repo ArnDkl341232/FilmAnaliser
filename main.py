@@ -5,10 +5,12 @@ import seaborn as sns
 import ast
 
 #download dataset
+
 url = "movies_metadata.csv"
 movies_df = pd.read_csv(url)
 
 #output info about database
+
 # movies_df.info()
 # print(movies_df.head())
 # print(movies_df.describe())
@@ -48,6 +50,7 @@ genre_count = genres_exploded['genres'].value_counts()
 print(genre_count)
 
 # Visualization of genres
+
 plt.figure(figsize=(10,6))
 sns.barplot(x=genre_count.index, y=genre_count.values)
 plt.title("Amount of films by genres")
@@ -76,6 +79,8 @@ plt.tight_layout()
 
 #-----------------------------------------------------------------------------------------------------------------------
 movies_df['profit'] = movies_df['revenue'] - movies_df['budget']
+
+# Visualization of expenses and income
 
 plt.figure(figsize=(10,6))
 sns.scatterplot(data = movies_df, x="budget" , y="profit", alpha=0.3)
